@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+    <!-- CDN Vue 3 -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body>
+    
+    <div id="app">
+        <h1>{{mayusculasTexto}}</h1>
+        
+        <h2 
+            class="bg-dark text-success"
+            :class="colorCantidad"
+        >
+            Mi salgo disponible es: {{cantidad}}
+        </h2>
+
+        <a :href="enlace">Ir al enlace</a><br>
+        <a v-bind:href="enlace">Ir al enlace</a>
+
+        <hr/>
+
+        <h2 v-if="estado">Cuenta Activa</h2>
+        <h2 v-else>Cuenta Desactivada</h2>
+
+        <hr/>
+
+        <h2 v-if="cantidad > 500">
+            Cantidad: 
+            <span class="text-success">{{cantidad}}</span>
+        </h2>
+        <h2 v-else-if="cantidad <= 500 && cantidad > 0">
+            Cantidad:
+            <span class="text-danger">{{cantidad}}</span>
+        </h2>
+        <h2 v-else>Sin Cantidad {{cantidad}}</h2>
+
+        <hr/>
+
+        <h2>Mis servicios disponibles</h2>
+        <ul>
+            <li v-for="(item, index) in servicios" :key="index">{{index + 1}} - {{item}}</li>
+        </ul>
+
+        <hr/>
+
+        <button v-on:click="agregarSaldo">Agregar Saldo</button>
+        <br><br>
+        <button @click="agregarSaldo">Agregar Saldo</button>
+
+        <hr/>
+
+        <button @click="disminuirSaldo(100)" :disabled="desactivar">Disminuir Saldo</button>
+
+        <footer-banco 
+            :valor="cantidad"
+            fecha="septiembre 2020"
+        />
+    </div>
+
+    <script src="main.js"></script>
+    <script src="components/Footer.js"></script>
+    <script>
+        const mountedApp = app.mount('#app');
+    </script>
+</body>
+</html>

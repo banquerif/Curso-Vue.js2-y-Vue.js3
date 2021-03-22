@@ -1,0 +1,9 @@
+# Carpeta node_modules
+CLI/**/node_modules
+
+# Carpeta .vscode
+CLI/.vscode
+
+# Archivo .DS_Store
+CLI/**/.DS_Store
+.DS_Store
